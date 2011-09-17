@@ -71,7 +71,7 @@ int main()
     if (atexit(bye) != 0)
         die("atexit() failed");
 
-    for (i = 0; i < 10000; i++) {
+    for (i = 0; i < 1000000; i++) {
         CALL_FUNCTION(main, foo);
         CALL_FUNCTION(main, bar);
     }
