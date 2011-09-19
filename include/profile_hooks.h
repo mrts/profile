@@ -9,12 +9,14 @@ struct start_stats
 {
     uintptr_t current_function;
     uintptr_t target_function;
+    uint64_t counter;
     long start_time;
 };
 
 struct end_stats
 {
     uintptr_t current_function;
+    uint64_t counter;
     long end_time;
 };
 

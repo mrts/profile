@@ -15,9 +15,10 @@ static void print_start_stats_callback(void* element)
         die("File pointer uninitialized");
 
     fprintf(json_output,
-            "  [%"PRIuPTR", %"PRIuPTR", %ld],\n",
+            "  [%"PRIuPTR", %"PRIuPTR", %"PRIu64", %ld],\n",
             stats->current_function,
             stats->target_function,
+            stats->counter,
             stats->start_time);
 }
 
@@ -29,8 +30,9 @@ static void print_end_stats_callback(void* element)
         die("File pointer uninitialized");
 
     fprintf(json_output,
-            "  [%"PRIuPTR", %ld],\n",
+            "  [%"PRIuPTR", %"PRIu64", %ld],\n",
             stats->current_function,
+            stats->counter,
             stats->end_time);
 }
 

@@ -22,6 +22,8 @@
 CREATE_SINGLETON(start)
 CREATE_SINGLETON(end)
 
+static unsigned int _g_counter = 0;
+
 void start_profile_hook(void* current_function, void* target_function)
 {
     struct start_stats* stats = malloc(sizeof(struct start_stats));
@@ -29,6 +31,7 @@ void start_profile_hook(void* current_function, void* target_function)
     stats->current_function = (uintptr_t)current_function;
     stats->target_function = (uintptr_t)target_function;
     stats->start_time = GetTickCount();
+    stats->counter = _g_counter++;
 
     vector_push_back(get_start_stats_vector(), stats);
 }
@@ -39,6 +42,7 @@ void end_profile_hook(void* current_function)
 
     stats->current_function = (uintptr_t)current_function;
     stats->end_time = GetTickCount();
+    stats->counter = _g_counter++;
 
     vector_push_back(get_end_stats_vector(), stats);
 }
